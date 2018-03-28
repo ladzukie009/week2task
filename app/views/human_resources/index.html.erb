@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2">
+      <div class="row">
+        <%= image_tag("hr.jpg",size: "200x200") %> <hr>
+      </div>
+        <%= link_to 'Go to Employee page', employees_path, target: :_blank, class: "btn btn-primary btn-block" %>
+    </div>
+
+    <div class="col-md-10">
+      <h2>HR-Index</h2>
+
+      <% if user_signed_in? %>
+        Welcome,
+        <%= link_to current_user.email %> <br />
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+
+      <% else %>
+        <%= link_to 'Login',new_user_session_path %> <br />
+      <% end %>
+      <br /><br />
+
+      <%= link_to 'Create Employee Record',new_employee_path %>
+
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Fullname</th>
+            <th>Age</th>
+            <th>Birthdate(y/m/d)</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+      <% @user.each do |t| %>
+        <tbody>
+          <tr>
+            <td><%= t.first_name %> <%= t.last_name %></td>
+            <td><%= t.age %></td>
+            <td><%= t.birthdate %></td>
+            <td><%= t.email %></td>
+            <td><%= t.role %></td>
+            <td>
+                <%= link_to 'Show',human_resource_path(t) %> |
+                <%= link_to 'Update',edit_human_resource_path(t)%> |
+                <%= link_to 'Delete',human_resource_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this record?" } %>
+
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+
+      </table>
+    </div>
+
+  </div>
+</div>

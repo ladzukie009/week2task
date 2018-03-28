@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <%= form_with model: @user, url: human_resource_path do |t| %>
+
+        <div class="form-group">
+          <%= t.label :first_name, class: "control-label" %>
+          <%= t.text_field :first_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= t.label :last_name, class: "control-label" %>
+          <%= t.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= t.label :age, class: "control-label" %>
+          <%= t.text_field :age, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= t.label :birthdate, class: "control-label" %>
+          <%= t.date_field :birthdate, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= t.label :email %><br />
+          <%= t.email_field :email, autofocus: true, autofocus: "email" %>
+        </div>
+
+        <div class="controls">
+          <%= t.submit %>
+        </div>
+
+      <% end %>
+      <br />
+      <%= link_to 'Back', root_path %>
+    </div>
+
+    <div class="col-md-3"></div>
+  </div>
+</div>

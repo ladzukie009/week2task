@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+
+  <thead>
+    <tr>
+      <th>Fullname</th>
+      <th>Age</th>
+      <th>Birthdate(y/m/d)</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+          <%= @user.first_name %>
+          <%= @user.last_name %>
+      </td>
+      <td><%= @user.age %></td>
+      <td><%= @user.birthdate %></td>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<%= link_to 'Back', root_path %>
