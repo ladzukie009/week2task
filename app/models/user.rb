@@ -8,4 +8,6 @@ class User < ApplicationRecord
   #validates :image, integrity: true
   #validates :image, processing: true
 
+has_many :requests
+
 end
