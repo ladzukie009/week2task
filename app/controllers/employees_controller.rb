@@ -22,7 +22,6 @@ class EmployeesController < ApplicationController
     @user = User.find(params[:id])
     @req = Request.new(user_params.merge(user_id: current_user.id))
       redirect_to employees_path
-
   end
   def destroy
     @user = User.find_by(id:params[:id])
