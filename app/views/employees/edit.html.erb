@@ -3,7 +3,7 @@
     <div class="col-md-3"></div>
 
     <div class="col-md-6">
-      <%= form_with model: @user, url: human_resource_path, html: { multipart: true } do |t| %>
+      <%= form_with model: @user, url: employee_path, html: { multipart: true } do |t| %>
 
         <div class="form-group">
           <%= t.label :image, class: "control-label" %>
@@ -47,7 +47,7 @@
 
       <% end %>
       <br />
-      <%= link_to 'Back', human_resources_path %>
+      <%= link_to 'Back', employees_path %>
     </div>
 
     <div class="col-md-3"></div>
