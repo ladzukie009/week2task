@@ -25,11 +25,7 @@ class EmployeesController < ApplicationController
 
   def update
     @user = User.find_by(id:params[:id])
-      if @user.update(sign_up_params)
-        redirect_to employees_path
-      else
-        render "edit"
-      end
+
   end
 
   def destroy
@@ -42,11 +38,11 @@ class EmployeesController < ApplicationController
   private
 
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :password_confirmation, :image, :status)
+    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :password_confirmation, :image)
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :password_confirmation, :current_password, :image, :status)
+    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :password_confirmation, :current_password, :image)
   end
 
 end

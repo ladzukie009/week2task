@@ -3,7 +3,7 @@
       <h2>HR-Index</h2>
       <% if user_signed_in? %>
         Welcome,
-        <%= link_to current_user.role.upcase %> <br />
+        <%= link_to current_user.role.upcase, edit_user_registration_path %> <br />
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Login',new_user_session_path %> <br />
@@ -19,7 +19,6 @@
             <th>Birthdate(y/m/d)</th>
             <th>Email</th>
             <th>Position</th>
-            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -32,7 +31,6 @@
             <td><%= t.birthdate %></td>
             <td><%= t.email %></td>
             <td><%= t.role %></td>
-            <td><%= t.status %></td>
             <td>
                 <%= link_to 'Show',human_resource_path(t) %> |
                 <%= link_to 'Update',edit_human_resource_path(t)%> |
