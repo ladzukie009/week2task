@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180402070003) do
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
+    t.integer "status", default: 0
     t.date "birthdate"
     t.string "email"
     t.string "password"

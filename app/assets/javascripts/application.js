@@ -10,6 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+
+$(function(){
+  $("*[data-select='status']").change(function() {
+      var status = $(this).val()
+      var url = $(this).data("url")
+      console.log(url)
+      $.ajax({
+      type: 'PUT',
+      url: url,
+      data: { status: status },
+      success:function(data){
+      },
+      error:function(){
+      }
+      });
+  });
+})

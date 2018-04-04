@@ -1,3 +1,8 @@
+<% if flash %>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<% end %>
 <% if user_signed_in? %>
 <div class="container">
   <div class="row">
@@ -10,7 +15,7 @@
           <div class="image">
             <div class="row">
               <div class="col-md-2">
-                <%= image_tag (current_user.image.url), size: "150x150" %>
+                <%= image_tag (current_user.image.url), size: "150x150" if current_user.image.present? %>
               </div>
               <div class="col-md-10">
                 <label>Welcome,</label>

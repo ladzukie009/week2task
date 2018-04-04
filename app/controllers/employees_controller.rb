@@ -20,17 +20,18 @@ class EmployeesController < ApplicationController
   end
   def update
     @user = User.find(params[:id])
-    @req = Request.new(user_params.merge(user_id: current_user.id))
-      redirect_to employees_path
+    @req = Request.create(user_params.merge(user_id: current_user.id))
+    flash[:success] = "Sending request successfully!"
+    redirect_to employees_path
   end
   def destroy
     @user = User.find_by(id:params[:id])
-      if @user.destroy
-        redirect_to employees_path
-      end
+    if @user.destroy
+      redirect_to employees_path
+    end
   end
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :image)
+    params.require(:user).permit(:first_name, :last_name, :age, :birthdate, :role, :email, :password, :image, :status)
   end
 end

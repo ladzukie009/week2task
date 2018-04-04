@@ -1,3 +1,6 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
 <div class="container1">
     <div class="col-md-12">
       <h2>HR-Index</h2>
@@ -22,11 +25,13 @@
             <th>Actions</th>
           </tr>
         </thead>
-      <% @user.each do |t| %>
+      <% @users.each do |t| %>
         <tbody>
           <tr>
             <td><%= t.first_name %> <%= t.last_name %></td>
-            <td><%= image_tag t.image.url(), size: "50x50"%></td>
+            <td>
+              <%= image_tag t.image.url(), size: "50x50" if t.image.present? %>
+            </td>
             <td><%= t.age %></td>
             <td><%= t.birthdate %></td>
             <td><%= t.email %></td>
@@ -42,3 +47,4 @@
       </table>
     </div>
 </div>
+<%= link_to 'request page', requests_human_resources_path %>
