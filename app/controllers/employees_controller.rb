@@ -22,7 +22,7 @@ class EmployeesController < ApplicationController
     @user = User.find(params[:id])
     @req = Request.create(user_params.merge(user_id: current_user.id))
     flash[:success] = "Sending request successfully!"
-    redirect_to employees_path
+     redirect_to employees_path
   end
   def destroy
     @user = User.find_by(id:params[:id])

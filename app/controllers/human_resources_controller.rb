@@ -11,7 +11,11 @@ def update_request_status
   if status == "approved"
     @req.user.update( first_name: @req.first_name, last_name: @req.last_name, age: @req.age, birthdate: @req.birthdate, email: @req.email, image: @req.image )
     @req.approved!
-    flash[:success] = "Request successfully approved!"
+#    flash[:success] = "Request successfully approved!"
+#    redirect_to requests_human_resources_path
+  else
+    @req.destroy
+    flash[:notice] = "Request deleted!"
     redirect_to requests_human_resources_path
   end
 end
@@ -24,7 +28,7 @@ def show
   @user = User.find_by(id:params[:id])
 end
 
-def new
+def newz
   @user = User.new
 end
 

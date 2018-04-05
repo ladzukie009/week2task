@@ -14,6 +14,7 @@
 //= require_tree .
 //= require jquery
 //= require jquery_ujs
+//= require sweetalert
 
 $(function(){
   $("*[data-select='status']").change(function() {
@@ -24,9 +25,12 @@ $(function(){
       type: 'PUT',
       url: url,
       data: { status: status },
-      success:function(data){
-      },
-      error:function(){
+      success:function(data) {
+        swal({title: "Request successfully updated!", text: "click ok to exit", type: "success"},
+          function(){
+            location.reload();
+          }
+        );
       }
       });
   });
