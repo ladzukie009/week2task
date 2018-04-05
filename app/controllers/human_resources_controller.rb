@@ -8,16 +8,19 @@ end
 def update_request_status
   @req = Request.find(params[:id])
   status = Request.statuses.key(params[:status].to_i)
+#  request = {}
   if status == "approved"
     @req.user.update( first_name: @req.first_name, last_name: @req.last_name, age: @req.age, birthdate: @req.birthdate, email: @req.email, image: @req.image )
     @req.approved!
-#    flash[:success] = "Request successfully approved!"
-#    redirect_to requests_human_resources_path
+  #  request[:message] = "Request successfully updated!"
+  #  redirect_to requests_human_resources_path
+    sweetalert_success('Click OK to exit.', 'Request successfully updated.', persistent: 'OK')
   else
     @req.destroy
-    flash[:notice] = "Request deleted!"
-    redirect_to requests_human_resources_path
+  #  request[:message] = "Request declined!"
+    sweetalert_success('Click OK to exit.', 'Request declined!.', persistent: 'OK')
   end
+#  render json: request
 end
 
 def index

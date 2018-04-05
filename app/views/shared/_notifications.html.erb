@@ -1,0 +1,8 @@
+<script>
+   <% if request[:notice].present? %>
+      puts "#{request[:notice]}"
+   <% end %>
+   <% if flash[:alert].present? %>
+      # show error alert
+   <% end %>
+</script>

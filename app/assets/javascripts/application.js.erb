@@ -25,12 +25,10 @@ $(function(){
       type: 'PUT',
       url: url,
       data: { status: status },
-      success:function(data) {
-        swal({title: "Request successfully updated!", text: "click ok to exit", type: "success"},
-          function(){
-            location.reload();
-          }
-        );
+      success: function(data) {
+        location.reload();
+      },
+      error: function() {
       }
       });
   });

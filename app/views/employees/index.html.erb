@@ -1,8 +1,3 @@
-<% if flash %>
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
-<% end %>
 <% if user_signed_in? %>
 <div class="container">
   <div class="row">
