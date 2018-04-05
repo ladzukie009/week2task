@@ -1,55 +1,63 @@
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2">
-      <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
-        <li><%= link_to 'Request', requests_human_resources_path %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      </ul>
-    </div>
-    <div class="col-md-10">
-      <h1 class="page-header">Dashboard</h1>
-      <% if user_signed_in? %>
-      <% else %>
-        <%= link_to 'Login',new_user_session_path %> <br />
-      <% end %>
-      <br /><br />
-      <%= link_to 'Create Employee Record',new_human_resource_path %>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th>Fullname</th>
-            <th>Image</th>
-            <th>Age</th>
-            <th>Birthdate(y/m/d)</th>
-            <th>Email</th>
-            <th>Position</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-      <% @users.each do |t| %>
-        <tbody>
-          <tr>
-            <td><%= t.first_name %> <%= t.last_name %></td>
-            <td>
-              <%= image_tag t.image.url(), size: "40x40" if t.image.present? %>
-            </td>
-            <td><%= t.age %></td>
-            <td><%= t.birthdate %></td>
-            <td><%= t.email %></td>
-            <td><%= t.role %></td>
-            <td>
-                <%= link_to 'Show',human_resource_path(t) %> |
-                <%= link_to 'Update',edit_human_resource_path(t)%> |
-                <%= link_to 'Delete',human_resource_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this record?" } %>
-            </td>
-          </tr>
-        </tbody>
-      <% end %>
-      </table>
+<header>
+
+</header>
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
+          <li><%= link_to 'Request', requests_human_resources_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </div>
+      <div class="col-md-10">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-success<%= key %>"><%= value %></div>
+        <% end %>
+        <h1 class="page-header">Dashboard</h1>
+        <% if user_signed_in? %>
+        <% else %>
+          <%= link_to 'Login',new_user_session_path %> <br />
+        <% end %>
+        <br /><br />
+        <%= link_to 'Create Employee Record',new_human_resource_path %>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Fullname</th>
+              <th>Image</th>
+              <th>Age</th>
+              <th>Birthdate(y/m/d)</th>
+              <th>Email</th>
+              <th>Position</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+        <% @users.each do |t| %>
+          <tbody>
+            <tr>
+              <td><%= t.first_name %> <%= t.last_name %></td>
+              <td>
+                <%= image_tag t.image.url(), size: "40x40" if t.image.present? %>
+              </td>
+              <td><%= t.age %></td>
+              <td><%= t.birthdate %></td>
+              <td><%= t.email %></td>
+              <td><%= t.role %></td>
+              <td>
+                  <%= link_to 'Show',human_resource_path(t) %> |
+                  <%= link_to 'Update',edit_human_resource_path(t)%> |
+                  <%= link_to 'Delete',human_resource_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this record?" } %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+</main>
+<footer>
+
+</footer>
