@@ -18,7 +18,7 @@ def update_request_status
   else
     @req.destroy
   #  request[:message] = "Request declined!"
-    sweetalert_success('Click OK to exit.', 'Request declined!.', persistent: 'OK')
+    sweetalert_warning('Click OK to exit.', 'Request declined!.', persistent: 'OK')
   end
 #  render json: request
 end

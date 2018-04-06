@@ -16,7 +16,7 @@
 //= require jquery_ujs
 //= require sweetalert
 
-$(function(){
+$(document).on('turbolinks:load',function(){
   $("*[data-select='status']").change(function() {
       var status = $(this).val()
       var url = $(this).data("url")
